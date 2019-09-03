@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitoring-sever
+  labels:
+    app: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+      - name: monoitoring-server-container
+        image: nozomi0966/monitoring_server
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
